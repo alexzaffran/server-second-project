@@ -88,8 +88,8 @@ router.put(':id', async function (req, resp) {
 
 router.delete('/:id', async function (req, resp) {
   let id = req.params.id;
-  await userBL.deleteUser(id);
-  return resp.json('Deleted !');
+  let users = await userBL.deleteUser(id);
+  return resp.json(users);
 });
 
 module.exports = router;

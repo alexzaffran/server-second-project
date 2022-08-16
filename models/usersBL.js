@@ -43,7 +43,7 @@ const deleteUser = async (id) => {
 };
 
 const updateUser = async (id, obj) => {
-  return await User.findByIdAndUpdate(id, {
+  const user = await User.findByIdAndUpdate(id, {
     name: obj.name,
     email: obj.email,
     street: obj.street,
@@ -52,6 +52,8 @@ const updateUser = async (id, obj) => {
     tasks: obj.tasks,
     posts: obj.posts,
   });
+
+  return await User.findOne({ _id: user._id });
 };
 
 const getAllTasks = async () => {
