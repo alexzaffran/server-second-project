@@ -17,6 +17,10 @@ const getUser = async (id) => {
   }
 };
 
+const getUserByName = (name) =>{
+  return User.find({"name" :{$regex : `^${name}`, "$options": "i" }})
+}
+
 const addUser = async (obj) => {
   try {
     console.log(`userBL addUser - start`);
@@ -98,4 +102,5 @@ module.exports = {
   getAllTasks,
   getTaskByUser,
   addTask,
+  getUserByName,
 };
