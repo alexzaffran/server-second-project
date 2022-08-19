@@ -47,16 +47,7 @@ const deleteUser = async (id) => {
 };
 
 const updateUser = async (id, obj) => {
-  const user = await User.findByIdAndUpdate(id, {
-    name: obj.name,
-    email: obj.email,
-    street: obj.street,
-    city: obj.city,
-    zipcode: obj.zipcode,
-    tasks: obj.tasks,
-    posts: obj.posts,
-  });
-
+  const user = await User.findByIdAndUpdate(id, obj);
   return await User.findOne({ _id: user._id });
 };
 

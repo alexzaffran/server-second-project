@@ -56,13 +56,13 @@ router.delete('/:id', async function (req, resp) {
   return resp.json(await userBL.deleteUser(id));
 });
 
-router.get('task', async function (req, res) {
-  let tasks = await userBL.getAllTasks();
+router.get('/task', async function (req, res) {
+    let tasks = await userBL.getAllTasks();
 
   return res.json(tasks);
 });
 
-router.get('task/:id', async function (req, res) {
+router.get('/task/:id', async function (req, res) {
   try {
     console.log(`task router get router - start`);
     let id = req.params.id;
@@ -77,25 +77,24 @@ router.get('task/:id', async function (req, res) {
 
 router.post('task', async function (req, resp) {
   try {
-    console.log(`user router add user - start`);
+    console.log(`user router add task - start`);
     let obj = req.body;
     let user = await userBL.addUser(obj);
-    console.log(`user router add user  - end`);
+    console.log(`user router add task  - end`);
     return resp.json(user);
   } catch (error) {
-    console.error(`user router  add user - error: ${JSON.stringify(error)}`);
+    console.error(`user router  add task - error: ${JSON.stringify(error)}`);
     resp.status(500).json(error);
   }
 });
 
-router.put('task/:id', async function (req, resp) {
+router.put('/task/:id', async function (req, resp) {
   let obj = req.body;
   let id = req.params.id;
   await userBL.updateUser(id, obj);
   return resp.json('Updated !');
 });
-
-router.delete('task/:id', async function (req, resp) {
+router.delete('/task/:id', async function (req, resp) {
   let id = req.params.id;
   let users = await userBL.deleteUser(id);
   return resp.json(users);

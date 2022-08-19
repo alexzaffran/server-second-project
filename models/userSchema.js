@@ -11,7 +11,7 @@ let PostSchema = new mongoose.Schema(
 let TaskSchema = new mongoose.Schema(
   {
     title: { type: String, require: true },
-    completed: { type: String, require: false },
+    completed: { type: Boolean , require: false },
   },
   { versionKey: false }
 );
